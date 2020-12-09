@@ -4,6 +4,7 @@ using ServiceStack.Data;
 using ServiceStack.OrmLite;
 using SqlServer.ServiceInterface;
 using SqlServer.ServiceModel.Types;
+using System.Diagnostics;
 
 namespace SqlServer
 {
@@ -46,7 +47,7 @@ namespace SqlServer
             });
             
             this.GatewayRequestFilters.Add((req, requestDto) => {
-                Console.WriteLine(req.UserHostAddress);
+                Debug.WriteLine(req.UserHostAddress);
             });
         }
     }
