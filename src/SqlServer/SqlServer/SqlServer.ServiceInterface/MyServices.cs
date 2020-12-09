@@ -12,7 +12,7 @@ namespace SqlServer.ServiceInterface
     {
         public object Any(Hello request)
         {
-            return new HelloResponse("Hello, {0}!".Fmt(request.Name));
+            return new HelloResponse { Result = "Hello, {0}!".Fmt(request.Name) };
         }
     }
 }
