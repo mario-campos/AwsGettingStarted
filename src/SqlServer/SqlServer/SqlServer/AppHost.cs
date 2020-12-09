@@ -38,11 +38,7 @@ namespace SqlServer
             }
             
             this.GlobalRequestFilters.Add((req, res, requestDto) => {
-                var sessionId = req.GetCookieValue("user-session");
-                if (sessionId == null)
-                {
-                    res.ReturnAuthRequired();
-                }
+                res.ReturnAuthRequired();
             });
         }
     }
