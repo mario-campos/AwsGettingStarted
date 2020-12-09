@@ -38,16 +38,19 @@ namespace SqlServer
                 }
             }
             
-            this.PreRequestFilters.Add((req, res) => {
-                res.ReturnAuthRequired();
-            });
+            void allowOriginFilter(IRequest httpReq, IResponse httpRes)
+            {
+                var origin = httpReq.Headers.Get(HttpHeaders.Origin);
+                if (origin != null)
+                {
+                    httpRes.AddHeader(HttpHeaders.AllowOrigin, origin);
+                }
+            }
+            
+            this.PreRequestFilters.Add(allowOriginFilter);
             
             this.GlobalRequestFilters.Add((req, res, requestDto) => {
                 res.ReturnAuthRequired();
-            });
-            
-            this.GatewayRequestFilters.Add((req, requestDto) => {
-                Debug.WriteLine(req.UserHostAddress);
             });
         }
     }
