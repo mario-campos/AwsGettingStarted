@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using ServiceStack;
+using ServiceStack.Web;
 using SqlServer.ServiceModel;
 
 namespace SqlServer.ServiceInterface
@@ -12,7 +13,8 @@ namespace SqlServer.ServiceInterface
         public object Any(Hello request)
         {
             return new HTTPResult("Hello, {0}!".Fmt(request.Name)) {
-                ContentType = MimeTypes.PlainText
+                ContentType = MimeTypes.PlainText,
+                StatusCode = HttpStatusCode.OK
             };
         }
     }
