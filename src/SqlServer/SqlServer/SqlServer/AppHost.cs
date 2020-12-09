@@ -38,12 +38,7 @@ namespace SqlServer
             }
             
             this.PreRequestFilters.Add((req, res) => {
-                if (string.Equals(req.UserHostAddress, "1.1.1.1")) 
-                {
-                    res.StatusCode = 403;
-                    res.StatusDescription = "RateLimitExceeded";
-                    res.EndRequest();
-                }
+                res.ReturnAuthRequired();
             });
             
             this.GlobalRequestFilters.Add((req, res, requestDto) => {
