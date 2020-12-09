@@ -41,13 +41,15 @@ jobs:
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v1
+      
     - name: Output CodeQL database
       uses: mario-campos/output-codeql-db@main
       id: output-codeql-db
       with:
         language: ${{ matrix.language }}
+        codeql: /opt/hostedtoolcache/CodeQL/0.0.0-20201106/x64/codeql/codeql
+        
     - name: Upload CodeQL database  
       uses: actions/upload-artifact@v2
       with:
-        name: codeql-database
         path: ${{ steps.output-codeql-db.outputs.path }}
