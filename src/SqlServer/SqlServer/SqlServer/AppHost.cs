@@ -37,11 +37,7 @@ namespace SqlServer
                 }
             }
             
-            this.GlobalRequestFilters.Add((req, res, requestDto) => {
-                res.ReturnAuthRequired();
-            });
-            
-            this.GlobalRequestFiltersAsync.Add(async (req, res, dto) => {
+            this.PreRequestFilters.Add(async (req, res, dto) => {
                 if (string.Equals(req.UserHostAddress, "1.1.1.1")) 
                 {
                     res.StatusCode = 403;
@@ -49,6 +45,11 @@ namespace SqlServer
                     res.EndRequest();
                 }
             });
+            
+            this.GlobalRequestFilters.Add((req, res, requestDto) => {
+                res.ReturnAuthRequired();
+            });
+            
         }
     }
 }
