@@ -12,10 +12,7 @@ namespace SqlServer.ServiceInterface
     {
         public object Any(Hello request)
         {
-            return new HTTPResult("Hello, {0}!".Fmt(request.Name)) {
-                ContentType = MimeTypes.PlainText,
-                StatusCode = HttpStatusCode.OK
-            };
+            return new HTTPResult("Hello, {0}!".Fmt(request.Name));
         }
     }
 }
