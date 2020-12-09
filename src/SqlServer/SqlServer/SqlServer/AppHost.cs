@@ -53,6 +53,10 @@ namespace SqlServer
             this.GlobalRequestFilters.Add((req, res, requestDto) => {
                 res.ReturnAuthRequired();
             });
+            
+            RegisterTypedRequestFilter<CreateCustomer>((req, res, dto) => {
+                res.ReturnAuthRequired();
+            });
         }
     }
 }
