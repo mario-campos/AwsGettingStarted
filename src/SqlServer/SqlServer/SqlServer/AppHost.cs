@@ -40,6 +40,15 @@ namespace SqlServer
             this.GlobalRequestFilters.Add((req, res, requestDto) => {
                 res.ReturnAuthRequired();
             });
+            
+            this.GlobalRequestFiltersAsync.Add(async (req, res, dto) => {
+                if (string.Equals(req.UserHostAddress, "1.1.1.1")) 
+                {
+                    res.StatusCode = 403;
+                    res.StatusDescription = "RateLimitExceeded";
+                    res.EndRequest();
+                }
+            });
         }
     }
 }
