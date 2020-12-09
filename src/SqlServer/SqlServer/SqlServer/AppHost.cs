@@ -45,6 +45,9 @@ namespace SqlServer
                 res.ReturnAuthRequired();
             });
             
+            this.GatewayRequestFilters.Add((req, requestDto) => {
+                Console.WriteLine(req.UserHostAddress);
+            });
         }
     }
 }
