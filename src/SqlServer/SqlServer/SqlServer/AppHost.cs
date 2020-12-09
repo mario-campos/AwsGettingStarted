@@ -4,7 +4,8 @@ using ServiceStack.Data;
 using ServiceStack.OrmLite;
 using SqlServer.ServiceInterface;
 using SqlServer.ServiceModel.Types;
-using System.Diagnostics;
+using ServiceStack.Host.Handlers;
+using ServiceStack.Web;
 
 namespace SqlServer
 {
