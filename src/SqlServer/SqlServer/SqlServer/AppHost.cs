@@ -37,7 +37,7 @@ namespace SqlServer
                 }
             }
             
-            this.PreRequestFilters.Add(async (req, res, dto) => {
+            this.PreRequestFilters.Add((req, res) => {
                 if (string.Equals(req.UserHostAddress, "1.1.1.1")) 
                 {
                     res.StatusCode = 403;
